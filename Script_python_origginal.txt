@@ -1,0 +1,74 @@
+Script Python v.1 Origginal
+
+app = wx.App(False)  # Create a new app, don't redirect stdout/stderr to a window.
+frame = wx.Frame(None, wx.ID_ANY, "Origginal",(200,80),(600,800))  # A Frame is a top-level window.
+frame.Show(True)     # Show the frame.
+wx.Button(frame, wx.ID_ANY, 'Cadastrar', (10,30), (60,30))
+wx.Button(frame, wx.ID_ANY, 'consultar', (116,30), (60,30))
+wx.Button(frame, wx.ID_ANY, 'Excluir', (220,30), (60,30))
+CPF=2
+"""Data base connect"""
+db=MySQLdb.connect("127.0.0.1", "root", "", "aluno")
+"""SQL select"""
+c=db.cursor()
+
+c.execute("""INSERT INTO ALUNO (cpf, nome_aluno, endereco)
+            VALUES ('%s', 'Danilo', 'Rua Afonso Bras')""", CPF)
+"""SQL delete"""
+#DELETE FROM aluno WHERE cpf=2147483647;
+#db.query("""DELETE FROM aluno WHERE cpf=20115012206""")
+
+"""Close data base"""
+#db.close()
+
+app.MainLoop()
+
+
+
+
+from tkinter import *
+from PyInstaller import*
+
+window = Tk()
+
+Janela de exibição de imagem
+
+def dummy():
+    photo = PhotoImage(file= "Origginal.png" )
+    Label(window, image=photo).pack()
+
+dummy()
+
+Label (window, text = 'Hello word').pack()
+window.title("Origginal")
+
+window.mainloop()
+
+"""
+
+"""
+            menuBar=wx.MenuBar()
+
+            fileMenu = wx.Menu()
+            exitItem=fileMenu.Append(wx.ID_EXIT, 'Sair', 'Quit Application')
+            acadastarPeca = fileMenu.Append(wx.ID_EXIT, 'Peças', 'Quit Application')
+            menuBar.Append(fileMenu, '&Cadastrar')
+            fileMenu2 = wx.Menu()
+            buscarItem = fileMenu2.Append(wx.ID_EXIT, 'Quit', 'Quit Application')
+            menuBar.Append(fileMenu2, '&Buscar')
+
+            self.SetMenuBar(menuBar)
+            self.Bind(wx.EVT_MENU, self.onQuit(), exitItem)
+            self.Bind(wx.EVT_MENU, self.onPeca(), acadastarPeca)
+            self.Bind(wx.EVT_MENU, self.onBuscar(), buscarItem)
+
+        def onQuit (self):
+
+            self.Show()
+        def onBuscar (self):
+
+            self.Show()
+         """
+
+
+
